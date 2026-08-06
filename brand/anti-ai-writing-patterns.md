@@ -1,7 +1,7 @@
-# Anti-AI Writing Patterns — Dale Halaway Brand
+# Anti-AI Writing Patterns — TJ Halaway Brand
 # Master Reference for All Writing Skills
 
-Load this file before executing any skill that produces copy for the Dale Halaway brand.
+Load this file before executing any skill that produces copy for the RunsOnItsOwn.ai brand.
 
 ---
 
@@ -36,19 +36,19 @@ These patterns are forbidden across all TJ Beatty-branded writing because they s
 **Examples to avoid:**
 - "This is the real issue — the one nobody talks about."
 - "You're stuck — not because you're broken, but because nobody taught you."
-- "That's where Dale comes in — with a framework that actually works."
+- "That's where TJ comes in — with a framework that actually works."
 
 **Why it signals AI:** Em dashes are a signature AI habit. Humans rewrite the sentence or use a period instead.
 
-**No exceptions:** Em dashes are forbidden without exception across all Dale brand copy. Rewrite using:
+**No exceptions:** Em dashes are forbidden without exception across all TJ brand copy. Rewrite using:
 - A period (strongest break)
 - A comma (lighter pause)
 - Restructuring the sentence entirely
 
 **Example rewrites:**
-- Bad: "This is where Dale comes in — with a framework that actually works."
-- Good: "This is where Dale comes in. His framework actually works."
-- Good: "Dale's framework is the difference."
+- Bad: "This is where I come in — with a framework that actually works."
+- Good: "This is where I comes in. My framework actually works."
+- Good: "My framework is the difference."
 
 ---
 
@@ -69,7 +69,7 @@ These patterns are forbidden across all TJ Beatty-branded writing because they s
 - "If you are 30 years of age and still not manifesting, how happy are you going to become over the next 10 years?"
 - "Can you think of a time when your parent sat you down and focused on how to manifest consciously?" (Specific enough to trigger a real memory)
 
-Dale's questions name something specific. They ask the reader to examine a real part of their experience, not just feel emotionally seen by vagueness.
+TJ's questions name something specific. They ask the reader to examine a real part of their experience, not just feel emotionally seen by vagueness.
 
 ---
 
@@ -83,7 +83,7 @@ Dale's questions name something specific. They ask the reader to examine a real 
 - Stacked negations: "It's not this. It's not that. It is the other thing."
 - "It's not willpower. It's not discipline. It's alignment."
 
-**Why it signals AI:** Creates a formulaic rhythm. Feels engineered. Dale's voice frames positively from the start without the negation setup.
+**Why it signals AI:** Creates a formulaic rhythm. Feels engineered. TJ's voice frames positively from the start without the negation setup.
 
 **Good pattern — Reframe positively:**
 - Instead of: "It's not about willpower, it's about alignment."
@@ -161,20 +161,20 @@ When you need to address a reader's false belief, name it directly without the "
 **What it is:** Converting conversational teaching into numbered/bulleted instructions or steps when the original teaching was narrative.
 
 **Examples to avoid:**
-Converting Dale's narrative teaching: "The reason most people struggle is they've been told to visualize without understanding what visualization actually is. Visualization is alignment with a future state. Most people visualize outcomes without aligning their current behavior..."
+Converting TJ's narrative teaching: "The reason most people struggle is they've been told to visualize without understanding what visualization actually is. Visualization is alignment with a future state. Most people visualize outcomes without aligning their current behavior..."
 
 Into: 
 "1. Understand visualization
 2. Align with future state
 3. Update current behavior"
 
-**Why it signals AI:** Loses Dale's conversational voice. Instructions and lists flatten the teaching into mechanical steps.
+**Why it signals AI:** Loses TJ's conversational voice. Instructions and lists flatten the teaching into mechanical steps.
 
 **Good pattern:**
 - Keep narrative teaching in prose
-- Use lists only when appropriate to the original teaching or when Dale himself uses lists
-- Lists work for: ingredient lists, timeline points with dates, specific offer details
-- Lists do NOT work for: Dale's teaching concepts (keep conversational)
+- Use lists only when appropriate to the original teaching or when TJ himself uses lists
+- Lists work for: ingredient lists, timeline points with dates, specific offer details, specific steps to take
+- Lists do NOT work for: TJ's teaching concepts (keep conversational)
 
 ---
 
@@ -184,7 +184,7 @@ All of these patterns are variations on one principle:
 
 **Avoid constructed rhetorical patterns that feel engineered rather than conversational.**
 
-Dale's voice sounds like a person thinking and speaking—working through ideas—not like someone executing a rhetorical technique or following a template.
+TJ's voice sounds like a person thinking and speaking—working through ideas—not like someone executing a rhetorical technique or following a template.
 
 Return to this principle when making judgment calls on borderline cases.
 
