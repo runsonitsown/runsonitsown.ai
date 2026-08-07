@@ -1,6 +1,9 @@
 ﻿.env*.local
 node_modules/
+.env*
+.dev.vars*
 .next/
 .open-next/
 .wrangler/
+*.tsbuildinfo
 .DS_Store
