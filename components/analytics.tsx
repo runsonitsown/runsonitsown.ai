@@ -35,6 +35,21 @@ export function trackContactSubmission() {
   });
 }
 
+export function trackQuizStart() {
+  window.gtag?.("event", "quiz_start");
+  window.fbq?.("trackCustom", "QuizStart");
+}
+
+export function trackQuizQuestionAnswered(question: number) {
+  window.gtag?.("event", "quiz_question_answered", { question_number: question });
+  window.fbq?.("trackCustom", "QuizQuestionAnswered", { question_number: question });
+}
+
+export function trackQuizComplete() {
+  window.gtag?.("event", "quiz_complete");
+  window.fbq?.("trackCustom", "QuizComplete");
+}
+
 function NavigationPageviews() {
   const pathname = usePathname();
   const firstRender = useRef(true);

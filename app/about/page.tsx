@@ -95,7 +95,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section--inversion">
         <div className="shell split">
           <div className="photo-frame">
             <Image

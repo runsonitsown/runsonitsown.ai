@@ -1,55 +1,130 @@
 # design-tokens.md — RunsOnItsOwn.ai
-# Single source of truth for all visual decisions. Do not invent values outside this file.
-# Last updated: 2026-07-20
+# Visual system of record. Codex follows this file exactly.
+# Last updated: 2026-08-11 (dark-dominant direction — supersedes the previous white-ground version)
 
 ---
 
-## PALETTE — "Modern Slate and Electric Blue"
+## THE ANCHOR
 
-| Token | Hex | Allowed uses | Forbidden uses |
-|---|---|---|---|
-| `ink` | `#16181D` | Body text, headings, dark section backgrounds, footer background | — |
-| `steel` | `#B6BEC9` | Secondary text, captions, dividers, muted UI, icon strokes | Body copy on white (too low contrast) |
-| `electric` | `#2D7FF9` | Primary CTA buttons, links, hover states, small accents (underlines, icons, active states) | Backgrounds of any section, body text, large filled areas |
-| `white` | `#FFFFFF` | Page background, card surfaces, text on dark sections | — |
-| `mist` | `#E7E9EC` | Alternating section backgrounds, card borders, input borders | Text of any kind |
+The visitor reads this site at 7pm, in a truck, on a phone, after a ten-hour day. The site is dark because that is when he is looking at it, and because the product is work that happens while he is not watching.
 
-Rules:
+Dark is not a tech-industry costume here. It is the time of day. Every choice below follows from that.
 
-- Electric blue is scarce on purpose. If a page has more than one electric-filled element visible per viewport, it's overused. Scarcity is what makes the CTA pop.
-- Dark sections (`ink` background, `white` text) are for high-impact moments only: hero variants, the final CTA band, the footer. Not for alternating stripes.
-- Text on `mist` sections is `ink`. Never `steel` for paragraphs.
-- Minimum contrast: all body text must pass WCAG AA.
+---
+
+## COLOR
+
+The six brand values are unchanged. Their assignments have changed.
+
+| Role | Value | Rule |
+|---|---|---|
+| Page ground | `#16181D` | Default background for the entire site. |
+| Elevated surface | `#1D2027` | Cards, quote blocks, form fields. One step up from the ground. |
+| Hairline | `#2A2E36` | Borders and dividers. Never heavier than 1px. |
+| Body text | `#B6BEC9` | All paragraph text on dark ground. |
+| Heading text | `#FFFFFF` | Headings and anything that must land first. |
+| Primary action | `#2D7FF9` | Buttons and links. Nothing else. |
+| Running signal | `#5EE1FF` | Reserved. See below. |
+| Inversion ground | `#E7E9EC` | One or two sections site-wide. Text on it is `#16181D`. |
+
+### The cyan rule
+
+`#5EE1FF` means something is active, connected, measured, or running on its own.
+
+Use it in localized interface details: the logo gate, live system paths, active quiz progress, illuminated nodes, status readings, divider gates, and live result numbers. Never use it for paragraph text, large filled backgrounds, or a full-page wash.
+
+Cyan may participate in a tightly contained glow or gradient around an active system element. The surrounding interface stays dark and restrained so the signal remains meaningful.
+
+### Inversion sections
+
+The site is dark. One or two sections invert to `#E7E9EC` so the contrast carries weight. Use inversion where the content is about a real person or real proof: the TJ block on `/`, the person section on `/about`.
+
+Do not alternate light and dark section by section. That reads as a template.
+
+---
 
 ## TYPOGRAPHY
 
-- **Typeface:** Inter (variable), self-hosted via `next/font`. No external font CDN calls.
-  - This is the working default. TJ may override; if he supplies a different face, update this file first, then the site.
-- **Headings:** Inter, weight 700. Tight tracking (-0.02em). `ink`.
-- **Body:** Inter, weight 400, 16–18px, line-height 1.6. `ink`.
-- **Secondary/captions:** Inter, weight 400–500, 14px. `steel`.
-- **CTA buttons:** Inter, weight 600, sentence case. Never all-caps shouting.
-- Scale: use a restrained type scale (e.g. 1.25 ratio). Mobile h1 ≈ 32–36px. This is a business site for busy owners, not a startup landing page with 96px hero text.
+Three roles. Load as variable fonts through `next/font`, subset to Latin, and cap the weights actually used. The Worker bundle limit is 3 MiB compressed.
 
-## LAYOUT AND SPACING
+| Role | Face | Weights | Use |
+|---|---|---|---|
+| Display | Archivo | 700, 800 | Headlines and section headings only |
+| Body | Inter | 400, 500 | All paragraph and UI text |
+| Utility | IBM Plex Mono | 500 | Eyebrow labels, counters, every number and data point |
 
-- Mobile-first at 390px. Max content width 1120px, centered.
-- Generous whitespace. Sections breathe: 64–96px vertical padding desktop, 48–64px mobile.
-- Cards: `white` surface, 1px `mist` border, subtle radius (8–12px). No heavy drop shadows.
-- One column on mobile, always. No horizontal scrolling elements.
+**The mono is the instrument voice.** This brand's entire mechanism is measurement, so numbers should look like readings rather than body copy. Hours, dollars, question counts, percentages, and small factual labels are all mono, uppercase, with wide letter-spacing.
+
+**Headlines** set tight: line-height near 1.05, letter-spacing slightly negative, sentence case. Never all-caps headlines.
+
+**Body** sits at line-height 1.6 with a measure of roughly 65 characters. Never centered.
+
+---
+
+## STRUCTURE
+
+### Eyebrow labels
+
+Every major section opens with a short mono uppercase label above its heading. The label names what the section is, factually. It is not a slogan and never repeats the heading.
+
+This is where the density comes from. A page of headline-plus-paragraph with nothing else reads as unfinished.
+
+### The gate motif — signature element
+
+The logo is a closed circuit loop with one segment picked out in electric blue: the gate, meaning the owner's approval step. That motif is the site's structural device.
+
+- **Section dividers** are a thin hairline path with one short segment separated out. On scroll into view, that segment lights `#5EE1FF` once and stays lit.
+- **The quiz progress indicator** is that same path filling left to right, with the gate segment marking the current question.
+- **Cards** carry one notched corner echoing the loop geometry. Same notch, same corner, every card, every page.
+
+The gate encodes something true: nothing happens without the owner's approval. That is the same claim the Pichai quote makes and the same claim `/we-fix-it-for-you` makes. It is structure, not ornament.
+
+### Cards
+
+Elevated surface, 1px hairline border, generous internal padding, the gate notch on one corner. Nested borders, subtle tonal gradients, and low-opacity shadows may create depth. Avoid generic floating white cards, heavy blur, or glow on every panel.
+
+### Density and rhythm
+
+Keep section padding tighter than feels natural on a first pass. Let paragraphs sit close to their headings. Let each screen carry real content. Substance reads as substance; acres of empty space read as a placeholder.
+
+---
 
 ## BUTTONS
 
-- **Primary:** `electric` fill, `white` text, radius 8px, comfortable tap target (min 48px tall on mobile). Hover: darken ~8%.
-- **Secondary:** `white` fill, 1px `ink` border, `ink` text. Used sparingly (e.g. "Book a call" when primary is quiz).
-- One primary button per viewport. See palette rules.
+- **Primary:** `#2D7FF9` fill, `#FFFFFF` label, medium weight, generous horizontal padding, small radius. Hover shifts brightness only.
+- **Secondary and decline links:** plain text in `#B6BEC9` with an underline. Small and quiet. Never a competing filled button.
+- One primary button per page view. Repeating the same CTA down the page is correct; introducing a second, different CTA is not.
+- Labels say what happens next in active voice. The button that says "Find my time leaks" leads to a page about time leaks.
+- Minimum tap target 44px.
+
+---
 
 ## IMAGERY
 
-- Real photos of TJ from `/brand/photos/` only. No stock people, no AI faces.
-- Photos sit on `white` or `mist`, never on `electric`.
-- Icons: simple line style, 1.5–2px stroke, `ink` or `steel`. Electric only for the single accent icon per section, if any.
+Photos are real. No stock, no illustration of people, no AI-generated imagery, no photos of public figures anywhere on the site.
 
-## OVERALL FEEL
+Studio headshots on white backgrounds will look pasted onto the dark ground. Crop tight, and either mask the background out or hold the image inside a card with a hairline border so the edge is deliberate. Never float a white rectangle on the dark page.
 
-Clean, confident, modern, calm. The site should feel like a sharp operator who has nothing to prove: lots of white space, strong type, one blue button telling you exactly what to do next. If a design choice reads as "hype" or "template," it's wrong.
+---
+
+## CONTROLLED DEPTH
+
+The site should feel like premium operational software, not a flat dark brochure. Use fine technical grids, nested panels, layered borders, localized illumination, and one strong system visualization in the home hero. The visualization represents work moving without constant supervision.
+
+Gradients and glows are permitted when they establish hierarchy or show an active connection. Keep them localized. No full-page neon haze, crypto styling, or game-interface clutter.
+
+## MOTION
+
+The home system visualization may carry slow ambient motion. Divider gates light once on scroll-in. Buttons and interactive cards may shift subtly on hover. Nothing else animates.
+
+No parallax or counters ticking up. Respect `prefers-reduced-motion` and disable all nonessential motion under it.
+
+---
+
+## QUALITY FLOOR
+
+- Responsive to 360px wide
+- Visible keyboard focus rings in `#5EE1FF`
+- Body text passes WCAG AA contrast against its ground
+- Tap targets at least 44px
+- Mobile-first: most traffic is a phone, and the design is judged there first

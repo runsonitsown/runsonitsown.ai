@@ -1,4 +1,4 @@
-export const QUIZ_URL = "/find-your-leaks#quiz-placeholder";
+export const QUIZ_URL = "/save-time";
 export const BOOK_CALL_URL = "/contact";
 
 export const SITE_NAME = "RunsOnItsOwn.ai";

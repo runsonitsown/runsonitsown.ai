@@ -4,6 +4,7 @@ import { FinalCta } from "@/components/final-cta";
 import { IncomeDisclaimer } from "@/components/income-disclaimer";
 import { QuizLink } from "@/components/quiz-link";
 import { QuoteBlock } from "@/components/quote-block";
+import { SystemCore } from "@/components/system-core";
 
 export const dynamic = "force-static";
 
@@ -31,7 +32,7 @@ const quizSteps = [
 export default function HomePage() {
   return (
     <>
-      <section className="hero">
+      <section className="hero hero--system">
         <div className="shell hero__inner">
           <div className="hero__copy">
             <h1>Your business is leaking hours every week to work AI could already be doing.</h1>
@@ -39,6 +40,7 @@ export default function HomePage() {
             <QuizLink>Find my time leaks</QuizLink>
             <p className="microcopy">12 questions. About 3 minutes. Free. No jargon.</p>
           </div>
+          <SystemCore />
         </div>
       </section>
 
@@ -88,7 +90,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section--mist">
+      <section className="section section--inversion">
         <div className="shell split">
           <div className="section-copy">
             <h2>Built by someone who runs this every day.</h2>
