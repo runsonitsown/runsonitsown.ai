@@ -24,6 +24,8 @@ export const hourlyValueChoices = [
   "$1,000 or more",
 ] as const;
 
+export const headcountChoices = ["Just me", "2-5", "6-10", "11-20", "20+"] as const;
+
 export const questions: QuizQuestion[] = [
   {
     id: "q0",
@@ -51,7 +53,7 @@ export const questions: QuizQuestion[] = [
   {
     id: "q2",
     prompt: "Including you, how many people work in your business?",
-    choices: ["Just me", "2-5", "6-10", "11-20", "20+"],
+    choices: [...headcountChoices],
   },
   {
     id: "annualRevenue",
@@ -199,6 +201,10 @@ export function isQualifiedRevenue(annualRevenue: string) {
   return qualifiedRevenueChoices.has(annualRevenue);
 }
 
+export function isQualifiedHeadcount(headcount: string) {
+  return headcount === "2-5" || headcount === "6-10" || headcount === "11-20";
+}
+
 export function calculateResults(answers: Answers) {
   const contributions: Array<{ category: string; hours: number }> = Object.entries(leakMath).map(
     ([id, values]) => {
@@ -228,13 +234,18 @@ export function calculateResults(answers: Answers) {
     contributions[0],
   ).category;
 
+  const qualifiedRevenue = isQualifiedRevenue(answers.annualRevenue ?? "");
+  const qualifiedHeadcount = isQualifiedHeadcount(answers.q2 ?? "");
+
   return {
     hoursLow: Math.max(3, roundedHours - 1),
     hoursHigh: Math.min(15, roundedHours + 1),
     dollarsMonthly: Math.round((cappedHours * hourlyValue * 4.33) / 100) * 100,
     ownerDependency,
     floorHit: measuredHours < 3,
-    qualifiedRevenue: isQualifiedRevenue(answers.annualRevenue ?? ""),
+    qualifiedRevenue,
+    qualifiedHeadcount,
+    idealProspect: qualifiedRevenue && qualifiedHeadcount,
     biggestMeasuredLeak,
   };
 }

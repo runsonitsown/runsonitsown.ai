@@ -1992,8 +1992,8 @@ summary:focus-visible {
 }
 
 .quiz-start__microcopy {
-  font-family: var(--font-utility), monospace;
-  letter-spacing: 0.02em;
+  font-family: var(--font-body), Inter, sans-serif;
+  letter-spacing: normal;
 }
 
 .quiz-start__credibility {

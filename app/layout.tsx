@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { Analytics } from "@/components/analytics";
 import { AttributionCapture } from "@/components/attribution-capture";
 import { GhlTracking } from "@/components/ghl-tracking";
+import { GoogleTagManager } from "@/components/google-tag-manager";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { GateMotion } from "@/components/gate-motion";
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     <html lang="en">
       <body className={`${archivo.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
         <GhlTracking />
+        <GoogleTagManager />
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>

@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
-import { isQualifiedRevenue, revenueChoices } from "@/lib/quiz";
+import {
+  headcountChoices,
+  isQualifiedHeadcount,
+  isQualifiedRevenue,
+  revenueChoices,
+} from "@/lib/quiz";
 import { attributionKeys } from "@/lib/attribution";
 
 export const dynamic = "force-dynamic";
@@ -58,6 +63,7 @@ export async function POST(request: Request) {
   const hoursHigh = cleanInteger(body.hoursHigh);
   const dollarsMonthly = cleanInteger(body.dollarsMonthly);
   const annualRevenue = cleanText(body.annualRevenue, 50);
+  const headcount = cleanText(body.headcount, 50);
   const quizVariant = cleanText(body.quizVariant, 10);
   const ownerDependency = cleanText(body.ownerDependency, 20);
   if (
@@ -68,6 +74,7 @@ export async function POST(request: Request) {
     dollarsMonthly === null ||
     !["v1", "v2"].includes(quizVariant) ||
     !["low", "moderate", "high", "critical"].includes(ownerDependency) ||
+    !headcountChoices.includes(headcount as (typeof headcountChoices)[number]) ||
     !revenueChoices.includes(annualRevenue as (typeof revenueChoices)[number])
   ) {
     return NextResponse.json({ error: "Please check the form and try again." }, { status: 400 });
@@ -108,9 +115,11 @@ export async function POST(request: Request) {
         hoursHigh,
         dollarsMonthly,
         businessType: cleanText(body.businessType, 100),
-        headcount: cleanText(body.headcount, 50),
+        headcount,
         annualRevenue,
         qualifiedRevenue: isQualifiedRevenue(annualRevenue),
+        qualifiedHeadcount: isQualifiedHeadcount(headcount),
+        idealProspect: isQualifiedRevenue(annualRevenue) && isQualifiedHeadcount(headcount),
         hourlyValue: cleanText(body.hourlyValue, 50),
         magicWand: cleanText(body.magicWand, 500),
         aiReadiness: cleanText(body.aiReadiness, 100),

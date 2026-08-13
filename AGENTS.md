@@ -80,6 +80,12 @@ The quiz itself lives on separate funnel pages (future project). Quiz CTAs link 
 
 ---
 
+## TRACKING
+
+- Google Analytics and Meta tracking are managed only through Google Tag Manager. Load the GTM container with the build-time `NEXT_PUBLIC_GTM_ID`, push site events to `dataLayer`, and do not add direct `gtag.js`, GA4, or Meta Pixel snippets.
+
+---
+
 ## FORMS AND GHL INTEGRATION
 
 - **Never** embed GHL iframe forms. Never expose the GHL webhook URL in client-side code.
