@@ -8,6 +8,7 @@ import {
   trackQuizStart,
 } from "@/components/analytics";
 import { IncomeDisclaimer } from "@/components/income-disclaimer";
+import type { QuizVariant } from "@/config/quiz-experiment";
 import { Answers, calculateResults, questions } from "@/lib/quiz";
 
 declare global {
@@ -33,7 +34,7 @@ const showPaywall = process.env.NEXT_PUBLIC_SHOW_PAYWALL === "true";
 const orderFormUrl = process.env.NEXT_PUBLIC_ORDER_FORM_URL;
 const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
-export function SaveTimeQuiz() {
+export function SaveTimeQuiz({ variant }: { variant: QuizVariant }) {
   const activeQuestions = showQ0
     ? questions
     : questions.filter((question) => question.id !== "q0");
@@ -62,14 +63,14 @@ export function SaveTimeQuiz() {
   }, []);
 
   function startQuiz() {
-    trackQuizStart();
+    trackQuizStart(variant);
     setStarted(true);
   }
 
   function choose(answer: string) {
     const question = activeQuestions[step];
     setAnswers((current) => ({ ...current, [question.id]: answer }));
-    trackQuizQuestionAnswered(step + 1);
+    trackQuizQuestionAnswered(step + 1, variant);
     if (question.id === "q11" && answer === "something else") return;
     setStep((current) => current + 1);
   }
@@ -77,7 +78,7 @@ export function SaveTimeQuiz() {
   function submitOther() {
     if (!otherProcess.trim()) return;
     setAnswers((current) => ({ ...current, q11: otherProcess.trim() }));
-    trackQuizQuestionAnswered(step + 1);
+    trackQuizQuestionAnswered(step + 1, variant);
     setStep((current) => current + 1);
   }
 
@@ -103,6 +104,7 @@ export function SaveTimeQuiz() {
         body: JSON.stringify({
           email,
           source: "runsonitsown.ai quiz",
+          quizVariant: variant,
           ...results,
           businessType: answers.q1,
           headcount: answers.q2,
@@ -114,7 +116,7 @@ export function SaveTimeQuiz() {
           turnstileToken: token,
         }),
       });
-      if (response.ok) trackQuizComplete();
+      if (response.ok) trackQuizComplete(variant);
       else console.error("Quiz lead submission failed.");
     } catch {
       console.error("Quiz lead submission failed.");

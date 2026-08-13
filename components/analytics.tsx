@@ -35,19 +35,25 @@ export function trackContactSubmission() {
   });
 }
 
-export function trackQuizStart() {
-  window.gtag?.("event", "quiz_start");
-  window.fbq?.("trackCustom", "QuizStart");
+export function trackQuizStart(variant: string) {
+  window.gtag?.("event", "quiz_start", { quiz_variant: variant });
+  window.fbq?.("trackCustom", "QuizStart", { quiz_variant: variant });
 }
 
-export function trackQuizQuestionAnswered(question: number) {
-  window.gtag?.("event", "quiz_question_answered", { question_number: question });
-  window.fbq?.("trackCustom", "QuizQuestionAnswered", { question_number: question });
+export function trackQuizQuestionAnswered(question: number, variant: string) {
+  window.gtag?.("event", "quiz_question_answered", {
+    question_number: question,
+    quiz_variant: variant,
+  });
+  window.fbq?.("trackCustom", "QuizQuestionAnswered", {
+    question_number: question,
+    quiz_variant: variant,
+  });
 }
 
-export function trackQuizComplete() {
-  window.gtag?.("event", "quiz_complete");
-  window.fbq?.("trackCustom", "QuizComplete");
+export function trackQuizComplete(variant: string) {
+  window.gtag?.("event", "quiz_complete", { quiz_variant: variant });
+  window.fbq?.("trackCustom", "QuizComplete", { quiz_variant: variant });
 }
 
 function NavigationPageviews() {

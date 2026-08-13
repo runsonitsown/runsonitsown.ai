@@ -6,6 +6,7 @@ export const dynamic = "force-dynamic";
 type QuizRequest = {
   email?: unknown;
   source?: unknown;
+  quizVariant?: unknown;
   hoursLow?: unknown;
   hoursHigh?: unknown;
   dollarsMonthly?: unknown;
@@ -50,12 +51,14 @@ export async function POST(request: Request) {
   const hoursHigh = cleanInteger(body.hoursHigh);
   const dollarsMonthly = cleanInteger(body.dollarsMonthly);
   const annualRevenue = cleanText(body.annualRevenue, 50);
+  const quizVariant = cleanText(body.quizVariant, 10);
   if (
     !emailPattern.test(email) ||
     !turnstileToken ||
     hoursLow === null ||
     hoursHigh === null ||
     dollarsMonthly === null ||
+    !["v1", "v2"].includes(quizVariant) ||
     !revenueChoices.includes(annualRevenue as (typeof revenueChoices)[number])
   ) {
     return NextResponse.json({ error: "Please check the form and try again." }, { status: 400 });
@@ -88,6 +91,7 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         email,
         source: "runsonitsown.ai quiz",
+        quizVariant,
         hoursLow,
         hoursHigh,
         dollarsMonthly,
