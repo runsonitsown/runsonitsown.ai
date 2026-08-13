@@ -1945,7 +1945,7 @@ summary:focus-visible {
 }
 
 .quiz-screen .quiz-question {
-  font-size: clamp(1.62rem, 7.2vw, 3.48rem);
+  font-size: clamp(1.215rem, 5.4vw, 2.61rem);
 }
 
 .quiz-progress {
