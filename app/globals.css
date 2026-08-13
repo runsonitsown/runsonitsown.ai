@@ -1944,6 +1944,10 @@ summary:focus-visible {
   color: var(--heading-text);
 }
 
+.quiz-screen .quiz-question {
+  font-size: clamp(1.62rem, 7.2vw, 3.48rem);
+}
+
 .quiz-progress {
   background: var(--hairline);
   border-radius: 0;
