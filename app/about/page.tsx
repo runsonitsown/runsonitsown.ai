@@ -8,7 +8,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "About TJ",
   description:
-    "Meet TJ Halaway, the computer programmer and direct response marketer behind RunsOnItsOwn.ai.",
+    "Meet TJ Beatty, the software engineer and direct response marketer behind RunsOnItsOwn.ai.",
 };
 
 export default function AboutPage() {
@@ -22,7 +22,7 @@ export default function AboutPage() {
           </div>
           <div className="photo-frame photo-frame--portrait">
             <Image
-              alt="Portrait of TJ Halaway"
+              alt="Portrait of TJ Beatty"
               fill
               priority
               sizes="(min-width: 760px) 420px, 90vw"
@@ -51,19 +51,12 @@ export default function AboutPage() {
           <h2>Running today.</h2>
           <div className="body-copy">
             <p>
-              An assistant he talks to in chat sorts his inbox. It writes email
-              drafts in his voice, ready for him to review and send.
+              TJ Beatty spent 15 years as a software engineer. He has built systems that follow
+              up with new leads, answer common questions, track ad spend back to sales, keep
+              expense records current, and handle routine production work. That work has included
+              graphic design, video editing, copy, and server upkeep. The experience behind this
+              quiz comes from systems used inside real companies.
             </p>
-            <p>Social media posts get written and published on their own.</p>
-            <p>
-              Another system keeps watch on competitors. TJ gets a report on what
-              they are doing.
-            </p>
-            <p>
-              Whole videos go from raw files to finished cuts. No human editor
-              touches them.
-            </p>
-            <p>Some run in TJ&apos;s own operation. Others run in a client&apos;s business.</p>
           </div>
         </div>
       </section>
@@ -86,7 +79,7 @@ export default function AboutPage() {
           </div>
           <div className="photo-frame photo-frame--waterfall">
             <Image
-              alt="TJ Halaway outdoors by a waterfall"
+              alt="TJ Beatty outdoors by a waterfall"
               fill
               sizes="(min-width: 760px) 480px, 90vw"
               src="/images/tj-waterfall.webp"
@@ -99,7 +92,7 @@ export default function AboutPage() {
         <div className="shell split">
           <div className="photo-frame">
             <Image
-              alt="TJ Halaway smiling outdoors"
+              alt="TJ Beatty smiling outdoors"
               fill
               sizes="(min-width: 760px) 480px, 90vw"
               src="/images/tj-candid.webp"

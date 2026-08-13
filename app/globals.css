@@ -1953,6 +1953,120 @@ summary:focus-visible {
   font-size: clamp(1.35rem, 6vw, 2.9rem);
 }
 
+.quiz-start-screen {
+  padding-block: 1.5rem;
+}
+
+.quiz-start {
+  gap: 1.15rem;
+}
+
+.quiz-start__heading {
+  font-size: clamp(2rem, 9vw, 4.6rem);
+  max-width: 17ch;
+}
+
+.quiz-start__body,
+.quiz-start__credibility,
+.quiz-start__microcopy,
+.quiz-gate-screen > p {
+  margin: 0;
+}
+
+.quiz-start__body {
+  font-size: clamp(1rem, 4.3vw, 1.15rem);
+  max-width: 55ch;
+}
+
+.quiz-start__action {
+  align-items: start;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.quiz-start__microcopy,
+.quiz-start__credibility {
+  color: var(--body-text);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.quiz-start__microcopy {
+  font-family: var(--font-utility), monospace;
+  letter-spacing: 0.02em;
+}
+
+.quiz-start__credibility {
+  border-top: 1px solid var(--hairline);
+  max-width: 62ch;
+  padding-top: 1rem;
+}
+
+.quiz-results__shell {
+  gap: 2rem;
+}
+
+.quiz-result-summary,
+.quiz-result-leak {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.quiz-result-intro,
+.quiz-dollar-result,
+.quiz-result-leak p,
+.quiz-offer p {
+  margin: 0;
+}
+
+.quiz-result-intro {
+  color: var(--heading-text);
+  font-size: clamp(1.05rem, 4.5vw, 1.3rem);
+}
+
+.quiz-results .quiz-primary-result {
+  font-family: var(--font-utility), monospace;
+  font-size: clamp(1.8rem, 9vw, 4.3rem);
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  margin: 0;
+  max-width: 16ch;
+}
+
+.quiz-dollar-result {
+  font-size: clamp(1rem, 4vw, 1.15rem);
+  max-width: 60ch;
+}
+
+.quiz-result-leak {
+  border-block: 1px solid var(--hairline);
+  padding-block: 1.75rem;
+}
+
+.quiz-result-label {
+  color: var(--signal);
+  font-family: var(--font-utility), monospace;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.quiz-result-leak h2,
+.quiz-offer h2 {
+  margin: 0;
+}
+
+.quiz-result-math,
+.quiz-offer__guarantee {
+  color: var(--body-text);
+  font-size: 0.82rem;
+}
+
+.quiz-offer {
+  border-color: var(--hairline);
+  border-radius: 0;
+}
+
 .quiz-progress {
   background: var(--hairline);
   border-radius: 0;

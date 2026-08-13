@@ -1,4 +1,4 @@
-# Anti-AI Writing Patterns — TJ Halaway Brand
+# Anti-AI Writing Patterns — TJ Beatty Brand
 # Master Reference for All Writing Skills
 
 Load this file before executing any skill that produces copy for the RunsOnItsOwn.ai brand.

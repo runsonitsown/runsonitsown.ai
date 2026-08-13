@@ -104,7 +104,7 @@ export default function HomePage() {
           </div>
           <div className="photo-frame photo-frame--portrait">
             <Image
-              alt="TJ Halaway standing near the water"
+              alt="TJ Beatty standing near the water"
               fill
               sizes="(min-width: 760px) 420px, 90vw"
               src="/images/tj-portrait.webp"

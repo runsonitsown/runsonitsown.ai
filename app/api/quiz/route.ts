@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isQualifiedRevenue, revenueChoices } from "@/lib/quiz";
 
 export const dynamic = "force-dynamic";
 
@@ -10,11 +11,12 @@ type QuizRequest = {
   dollarsMonthly?: unknown;
   businessType?: unknown;
   headcount?: unknown;
+  annualRevenue?: unknown;
   hourlyValue?: unknown;
-  dreaded?: unknown;
   magicWand?: unknown;
   aiReadiness?: unknown;
   knowledgeFlag?: unknown;
+  biggestMeasuredLeak?: unknown;
   motivation?: unknown;
   turnstileToken?: unknown;
 };
@@ -47,7 +49,15 @@ export async function POST(request: Request) {
   const hoursLow = cleanInteger(body.hoursLow);
   const hoursHigh = cleanInteger(body.hoursHigh);
   const dollarsMonthly = cleanInteger(body.dollarsMonthly);
-  if (!emailPattern.test(email) || !turnstileToken || hoursLow === null || hoursHigh === null || dollarsMonthly === null) {
+  const annualRevenue = cleanText(body.annualRevenue, 50);
+  if (
+    !emailPattern.test(email) ||
+    !turnstileToken ||
+    hoursLow === null ||
+    hoursHigh === null ||
+    dollarsMonthly === null ||
+    !revenueChoices.includes(annualRevenue as (typeof revenueChoices)[number])
+  ) {
     return NextResponse.json({ error: "Please check the form and try again." }, { status: 400 });
   }
 
@@ -83,11 +93,13 @@ export async function POST(request: Request) {
         dollarsMonthly,
         businessType: cleanText(body.businessType, 100),
         headcount: cleanText(body.headcount, 50),
+        annualRevenue,
+        qualifiedRevenue: isQualifiedRevenue(annualRevenue),
         hourlyValue: cleanText(body.hourlyValue, 50),
-        dreaded: cleanText(body.dreaded, 100),
         magicWand: cleanText(body.magicWand, 500),
         aiReadiness: cleanText(body.aiReadiness, 100),
         knowledgeFlag: body.knowledgeFlag === true,
+        biggestMeasuredLeak: cleanText(body.biggestMeasuredLeak, 100),
         motivation: cleanText(body.motivation, 100),
       }),
       signal: AbortSignal.timeout(10_000),
