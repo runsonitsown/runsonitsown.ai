@@ -13,7 +13,7 @@ The model is adapted from Corey Ganim's AI assessment business (paid assessment 
 
 ## WHO WE SERVE
 
-Small business owners: 2-20 employees, $500K-$5M/year revenue, working 40-60 hrs/week, too deep in the weeds to learn AI, using nothing beyond occasionally prompting ChatGPT. Top pains: email overload, repetitive admin, meetings and follow-up, writing tasks, answering the same customer questions repeatedly, processes locked in the owner's head.
+Owner-led businesses with 2 to 20 employees and roughly $500K to $50M in annual revenue. They work 40-60 hrs/week, are too deep in the weeds to learn AI, and use nothing beyond occasionally prompting ChatGPT. Top pains: email overload, repetitive admin, meetings and follow-up, writing tasks, answering the same customer questions repeatedly, processes locked in the owner's head.
 
 They buy time back (5-10 hrs/week), clear dollar ROI, and stupid-simple deliverables. They do not do homework — products deliver finished results, not assignments. Every recommendation pulls at least one of three levers: make money, save time, raise quality. We are not niching to coaches.
 

@@ -9,6 +9,7 @@ import {
 } from "@/components/analytics";
 import { IncomeDisclaimer } from "@/components/income-disclaimer";
 import type { QuizVariant } from "@/config/quiz-experiment";
+import { getFirstTouchAttribution } from "@/lib/attribution";
 import { Answers, calculateResults, questions } from "@/lib/quiz";
 
 declare global {
@@ -114,6 +115,7 @@ export function SaveTimeQuiz({ variant }: { variant: QuizVariant }) {
           aiReadiness: answers.q12,
           motivation: answers.q0 ?? "",
           turnstileToken: token,
+          ...getFirstTouchAttribution(),
         }),
       });
       if (response.ok) trackQuizComplete(variant);
@@ -276,6 +278,17 @@ function Results({ results }: { results: ReturnType<typeof calculateResults> }) 
               capped at 15 hours a week.
             </p>
           </div>
+
+          {results.ownerDependency === "high" || results.ownerDependency === "critical" ? (
+            <div className="quiz-result-leak quiz-owner-flag">
+              <p className="quiz-result-label">OWNER BOTTLENECK FLAG</p>
+              <h2>Key parts of the business still depend on you.</h2>
+              <p>
+                Your answers show that important work still lives in your head. That can slow the
+                team down even when the weekly hours are hard to measure.
+              </p>
+            </div>
+          ) : null}
 
           {showReportBridge ? (
             <div className="quiz-offer">

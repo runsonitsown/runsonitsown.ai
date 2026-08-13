@@ -7,7 +7,8 @@ export type QuizQuestion = {
 };
 
 export const revenueChoices = [
-  "Under $1M",
+  "Under $500K",
+  "$500K to $999K",
   "$1M to $4.9M",
   "$5M to $9.9M",
   "$10M to $24.9M",
@@ -159,6 +160,8 @@ const hourlyValueByChoice: Record<(typeof hourlyValueChoices)[number], number> =
 };
 
 const qualifiedRevenueChoices = new Set<string>([
+  "$500K to $999K",
+  "$1M to $4.9M",
   "$5M to $9.9M",
   "$10M to $24.9M",
   "$25M to $50M",
@@ -207,11 +210,13 @@ export function calculateResults(answers: Answers) {
   );
 
   const q9Answer = answers.q9 ?? "";
-  const knowledgeFlag =
-    q9Answer.startsWith("A lot of it") || q9Answer.startsWith("The business IS my head");
-  if (knowledgeFlag) {
-    contributions.push({ category: "Work trapped in your head", hours: 1 });
-  }
+  const ownerDependency = q9Answer.startsWith("The business IS my head")
+    ? "critical"
+    : q9Answer.startsWith("A lot of it")
+      ? "high"
+      : q9Answer === "Some of it"
+        ? "moderate"
+        : "low";
 
   const measuredHours = contributions.reduce((total, item) => total + item.hours, 0);
   const cappedHours = Math.max(3, Math.min(15, measuredHours));
@@ -224,10 +229,10 @@ export function calculateResults(answers: Answers) {
   ).category;
 
   return {
-    hoursLow: roundedHours - 1,
-    hoursHigh: roundedHours + 1,
+    hoursLow: Math.max(3, roundedHours - 1),
+    hoursHigh: Math.min(15, roundedHours + 1),
     dollarsMonthly: Math.round((cappedHours * hourlyValue * 4.33) / 100) * 100,
-    knowledgeFlag,
+    ownerDependency,
     floorHit: measuredHours < 3,
     qualifiedRevenue: isQualifiedRevenue(answers.annualRevenue ?? ""),
     biggestMeasuredLeak,

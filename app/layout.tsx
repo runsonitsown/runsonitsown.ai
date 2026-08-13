@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Mono, Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import { Analytics } from "@/components/analytics";
+import { AttributionCapture } from "@/components/attribution-capture";
+import { GhlTracking } from "@/components/ghl-tracking";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { GateMotion } from "@/components/gate-motion";
@@ -44,6 +46,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang="en">
       <body className={`${archivo.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
+        <GhlTracking />
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
@@ -51,6 +54,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <main id="main-content">{children}</main>
         <SiteFooter />
         <Analytics />
+        <AttributionCapture />
         <GateMotion />
         <SpotlightMotion />
       </body>

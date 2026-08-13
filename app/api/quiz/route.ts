@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { isQualifiedRevenue, revenueChoices } from "@/lib/quiz";
+import { attributionKeys } from "@/lib/attribution";
 
 export const dynamic = "force-dynamic";
 
@@ -16,10 +17,16 @@ type QuizRequest = {
   hourlyValue?: unknown;
   magicWand?: unknown;
   aiReadiness?: unknown;
-  knowledgeFlag?: unknown;
+  ownerDependency?: unknown;
   biggestMeasuredLeak?: unknown;
   motivation?: unknown;
   turnstileToken?: unknown;
+  utm_source?: unknown;
+  utm_medium?: unknown;
+  utm_campaign?: unknown;
+  utm_content?: unknown;
+  utm_term?: unknown;
+  fbclid?: unknown;
 };
 
 type TurnstileResponse = { success: boolean };
@@ -52,6 +59,7 @@ export async function POST(request: Request) {
   const dollarsMonthly = cleanInteger(body.dollarsMonthly);
   const annualRevenue = cleanText(body.annualRevenue, 50);
   const quizVariant = cleanText(body.quizVariant, 10);
+  const ownerDependency = cleanText(body.ownerDependency, 20);
   if (
     !emailPattern.test(email) ||
     !turnstileToken ||
@@ -59,6 +67,7 @@ export async function POST(request: Request) {
     hoursHigh === null ||
     dollarsMonthly === null ||
     !["v1", "v2"].includes(quizVariant) ||
+    !["low", "moderate", "high", "critical"].includes(ownerDependency) ||
     !revenueChoices.includes(annualRevenue as (typeof revenueChoices)[number])
   ) {
     return NextResponse.json({ error: "Please check the form and try again." }, { status: 400 });
@@ -85,6 +94,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "The spam check did not pass. Please try again." }, { status: 400 });
     }
 
+    const attribution = Object.fromEntries(
+      attributionKeys.map((key) => [key, cleanText(body[key], 500)]),
+    );
     const webhookResponse = await fetch(webhookUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -102,9 +114,10 @@ export async function POST(request: Request) {
         hourlyValue: cleanText(body.hourlyValue, 50),
         magicWand: cleanText(body.magicWand, 500),
         aiReadiness: cleanText(body.aiReadiness, 100),
-        knowledgeFlag: body.knowledgeFlag === true,
+        ownerDependency,
         biggestMeasuredLeak: cleanText(body.biggestMeasuredLeak, 100),
         motivation: cleanText(body.motivation, 100),
+        ...attribution,
       }),
       signal: AbortSignal.timeout(10_000),
     });
