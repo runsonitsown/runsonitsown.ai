@@ -166,10 +166,10 @@ export function SaveTimeQuiz({ variant }: { variant: QuizVariant }) {
         <main className="quiz-screen">
           <section className="quiz-shell quiz-gate-screen">
             <p className="quiz-kicker">YOUR RESULT IS READY</p>
-            <h1 className="quiz-terminal-heading">Enter your email to reveal your number.</h1>
+            <h1 className="quiz-terminal-heading">Use the email you actually check.</h1>
             <p>Your result appears on the next screen.</p>
             <form className="quiz-gate" noValidate onSubmit={submitEmail}>
-              <label htmlFor="quiz-email">Email</label>
+              <label htmlFor="quiz-email">Email you check most</label>
               <input
                 autoComplete="email"
                 id="quiz-email"
